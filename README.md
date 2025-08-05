@@ -1,130 +1,94 @@
-### Prerequisites
-Before running the application, ensure you have the following libraries installed:
-- `tkinter`
-- `os`
-- `json`
+# 🤖 Scaffolding Chatbot Creator
 
-You can install any required libraries using pip if they are not already installed.
+¡Crea tus propios chatbots educativos de scaffolding sin escribir una sola línea de código! Esta herramienta te permite diseñar conversaciones guiadas paso a paso, ideales para tutorías, explicaciones de conceptos y ejercicios prácticos.
 
-### Tkinter Application Code
+![Captura de la aplicación](httpsd://i.imgur.com/your-image-url.png)  <!-- Reemplaza esto con una URL de una captura de tu app. Súbela a imgur.com u otro servicio -->
 
-```python
-import tkinter as tk
-from tkinter import messagebox
-import os
-import json
+---
 
-class ChatbotScaffoldingApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Chatbot Scaffolding Guide")
-        
-        self.create_widgets()
-        
-    def create_widgets(self):
-        # Title Label
-        title_label = tk.Label(self.root, text="Chatbot Scaffolding Guide", font=("Arial", 16))
-        title_label.pack(pady=10)
+## ✨ Características Principales
 
-        # Step 1
-        step1_label = tk.Label(self.root, text="Step 1: Create a Project Directory")
-        step1_label.pack(pady=5)
-        self.step1_entry = tk.Entry(self.root, width=50)
-        self.step1_entry.pack(pady=5)
-        step1_button = tk.Button(self.root, text="Create Directory", command=self.create_directory)
-        step1_button.pack(pady=5)
+- **Editor Visual Intuitivo**: Define el comportamiento de tu chatbot a través de una sencilla interfaz gráfica. ¡No más código!
+- **Sistema de Scaffolding**: Guía a los usuarios paso a paso a través de problemas complejos, ofreciendo pistas y feedback positivo.
+- **FAQs Dinámicas**: Crea una sección de preguntas frecuentes que el bot puede responder de forma inteligente.
+- **Configuraciones Guardables**: Guarda y carga diferentes "personalidades" de chatbot como archivos `.json`. ¡Crea un tutor para cada tema!
+- **Interfaz de Chat Moderna**: Una ventana de chat atractiva con burbujas de diálogo que mejora la experiencia del usuario.
+- **Creación Automatizada**: Incluye un flujo de trabajo de GitHub Actions para generar automáticamente un ejecutable (`.exe`) para una fácil distribución.
 
-        # Step 2
-        step2_label = tk.Label(self.root, text="Step 2: Create a Configuration File")
-        step2_label.pack(pady=5)
-        self.step2_entry = tk.Entry(self.root, width=50)
-        self.step2_entry.pack(pady=5)
-        step2_button = tk.Button(self.root, text="Create Config File", command=self.create_config_file)
-        step2_button.pack(pady=5)
+## 🚀 Cómo Empezar
 
-        # Step 3
-        step3_label = tk.Label(self.root, text="Step 3: Create a Chatbot Script")
-        step3_label.pack(pady=5)
-        self.step3_entry = tk.Entry(self.root, width=50)
-        self.step3_entry.pack(pady=5)
-        step3_button = tk.Button(self.root, text="Create Chatbot Script", command=self.create_chatbot_script)
-        step3_button.pack(pady=5)
+### Para Usuarios
 
-        # Exit Button
-        exit_button = tk.Button(self.root, text="Exit", command=self.root.quit)
-        exit_button.pack(pady=20)
+1.  Ve a la sección de [**Releases**](https://github.com/tu-usuario/tu-repositorio/releases) de este repositorio. <!-- Reemplaza con tu URL -->
+2.  Descarga el archivo `ScaffoldingChatbot.exe` de la última versión.
+3.  Ejecuta el archivo. No necesita instalación.
+4.  Dentro de la aplicación, haz clic en **"Cargar Configuración"** y selecciona uno de los archivos `.json` de ejemplo (`config_ecuaciones.json`, `config_leyes_newton.json`, etc.).
+5.  Ve a la pestaña **"Chat con Bot"** y empieza a interactuar. ¡Prueba a escribir "practicar"!
 
-    def create_directory(self):
-        project_name = self.step1_entry.get()
-        if project_name:
-            try:
-                os.makedirs(project_name, exist_ok=True)
-                messagebox.showinfo("Success", f"Directory '{project_name}' created successfully!")
-            except Exception as e:
-                messagebox.showerror("Error", str(e))
-        else:
-            messagebox.showwarning("Input Error", "Please enter a project name.")
+### Para Desarrolladores
 
-    def create_config_file(self):
-        project_name = self.step1_entry.get()
-        config_name = self.step2_entry.get()
-        if project_name and config_name:
-            config_path = os.path.join(project_name, config_name)
-            config_data = {
-                "intents": []
-            }
-            try:
-                with open(config_path, 'w') as config_file:
-                    json.dump(config_data, config_file, indent=4)
-                messagebox.showinfo("Success", f"Configuration file '{config_name}' created successfully!")
-            except Exception as e:
-                messagebox.showerror("Error", str(e))
-        else:
-            messagebox.showwarning("Input Error", "Please enter both project name and config file name.")
+Si quieres modificar o ejecutar el código fuente:
 
-    def create_chatbot_script(self):
-        project_name = self.step1_entry.get()
-        script_name = self.step3_entry.get()
-        if project_name and script_name:
-            script_path = os.path.join(project_name, script_name)
-            script_content = """import json
+1.  **Clona el repositorio:**
+    ```bash
+    git clone https://github.com/tu-usuario/tu-repositorio.git
+    cd tu-repositorio
+    ```
 
-def load_intents(file_path):
-    with open(file_path) as f:
-        intents = json.load(f)
-    return intents
+2.  **Crea un entorno virtual (recomendado):**
+    ```bash
+    python -m venv venv
+    # En Windows
+    venv\Scripts\activate
+    # En macOS/Linux
+    source venv/bin/activate
+    ```
 
-if __name__ == "__main__":
-    intents = load_intents('config.json')
-    print(intents)
-"""
-            try:
-                with open(script_path, 'w') as script_file:
-                    script_file.write(script_content)
-                messagebox.showinfo("Success", f"Chatbot script '{script_name}' created successfully!")
-            except Exception as e:
-                messagebox.showerror("Error", str(e))
-        else:
-            messagebox.showwarning("Input Error", "Please enter both project name and script file name.")
+3.  **Instala las dependencias:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = ChatbotScaffoldingApp(root)
-    root.mainloop()
-```
+4.  **Ejecuta la aplicación:**
+    ```bash
+    python main.py
+    ```
 
-### Explanation of the Code
-1. **Tkinter Setup**: The application uses Tkinter to create a GUI. It has a title and three main steps for the user to follow.
-2. **Step 1**: The user can create a project directory by entering a name and clicking the "Create Directory" button.
-3. **Step 2**: The user can create a configuration file (JSON) for the chatbot by entering a name and clicking the "Create Config File" button.
-4. **Step 3**: The user can create a basic chatbot script by entering a name and clicking the "Create Chatbot Script" button.
-5. **Error Handling**: The application includes basic error handling to inform the user of any issues that arise during the process.
+## 🛠️ Creando tu Propio Chatbot
 
-### Running the Application
-To run the application, save the code to a file named `chatbot_scaffolding.py` and execute it using Python:
+La magia de esta herramienta reside en la pestaña **"Edición del Chatbot"**. Aquí puedes:
 
-```bash
-python chatbot_scaffolding.py
-```
+- **Definir el Tema y Público**: Dale un nombre y un contexto a tu chatbot.
+- **Añadir FAQs**:
+  - Escribe una pregunta común del usuario.
+  - Escribe la respuesta que debe dar el bot.
+  - El sistema creará automáticamente un patrón flexible para detectar la pregunta.
+- **Crear Pasos de Resolución**:
+  - **Instrucción**: Lo que el bot pregunta al usuario.
+  - **Patrón Regex**: La respuesta esperada del usuario (usa expresiones regulares para flexibilidad).
+  - **Feedback de Éxito**: Lo que el bot dice cuando el usuario acierta.
+  - **Pista de Error**: La ayuda que el bot ofrece si el usuario se equivoca.
+- **Gestionar Contenido**: Puedes **modificar**, **eliminar** y **reordenar** (subir/bajar) los pasos para perfeccionar el flujo de la conversación.
 
-This will open a window where the user can follow the steps to create their chatbot scaffolding.
+Una vez que estés satisfecho, haz clic en **"Guardar Configuración"** para crear tu propio archivo `.json` y compartirlo.
+
+## 📁 Estructura del Proyecto
+.
+├── .github/workflows/ # Flujos de trabajo de GitHub Actions
+│ └── build-executable.yml
+├── backend/ # Lógica del chatbot
+│ └── chatbot_logic.py
+├── gui/ # Componentes de la interfaz gráfica
+│ ├── chat_panel.py
+│ └── scaffolding_app.py
+├── assets/ # Iconos, imágenes, etc. (ej: icon.ico)
+├── configs/ # Archivos de configuración de ejemplo
+│ ├── config_ecuaciones.json
+│ └── config_leyes_newton.json
+├── main.py # Punto de entrada de la aplicación
+├── persistence.py # Lógica para guardar/cargar archivos JSON
+└── requirements.txt # Dependencias de Python
+
+## 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas! Si tienes ideas para nuevas características, mejoras en la interfaz o correcciones de errores, por favor abre un [**Issue**](https://github.com/tu-usuario/tu-repositorio/issues) para discutirlo o envía un [**Pull Request**](https://github.com/tu-usuario/tu-repositorio/pulls).

@@ -1,21 +1,19 @@
-# Nombre del flujo de trabajo que aparecerá en la pestaña "Actions" de GitHub
-name: Build Windows Executable
+# Nombre del flujo de trabajo
+name: Build Windows Executable and Create Release
 
-# Define cuándo se ejecutará este flujo de trabajo
+# Se ejecuta cuando se crea y se sube una etiqueta (tag) que empieza con 'v'
 on:
   push:
-    branches: [ main ] # Se ejecuta cada vez que haces un push a la rama 'main'
+    tags:
+      - 'v*'
 
-# Define los trabajos (jobs) que se van a ejecutar. En este caso, solo uno.
 jobs:
   build:
-    # El tipo de máquina virtual (runner) en la que se ejecutará el trabajo.
-    # Usamos windows-latest para crear un .exe
+    # Se ejecutará en la última versión de Windows disponible en GitHub
     runs-on: windows-latest
 
-    # Los pasos que componen el trabajo
     steps:
-      # 1. Clona tu repositorio en el runner
+      # 1. Clona el repositorio para tener acceso al código
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -23,22 +21,25 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11' # Puedes usar la versión de Python que prefieras
+          python-version: '3.11'
 
-      # 3. Instala las dependencias listadas en requirements.txt
+      # 3. Instala las dependencias del proyecto
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4. Ejecuta PyInstaller para crear el ejecutable
+      # 4. Construye el ejecutable usando PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller --name "ScaffoldingChatbot" --onefile --windowed --icon="icon.ico" main.py
-
-      # 5. Sube el ejecutable como un artefacto del flujo de trabajo
-      - name: Upload executable artifact
-        uses: actions/upload-artifact@v3
+          pyinstaller --name "ScaffoldingChatbot" --onefile --windowed --icon="assets/icon.ico" --add-data "configs;configs" main.py
+      
+      # 5. Crea un Release en GitHub y adjunta el ejecutable
+      - name: Create Release and Upload Asset
+        uses: softprops/action-gh-release@v2
         with:
-          name: windows-executable # El nombre del artefacto que podrás descargar
-          path: dist/ScaffoldingChatbot.exe # La ruta al archivo .exe generado
+          # El nombre del archivo que se adjuntará al release
+          files: dist/ScaffoldingChatbot.exe
+        env:
+          # El token es necesario para que la acción pueda crear un release
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
