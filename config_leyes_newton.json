@@ -1,0 +1,84 @@
+{
+    "tema": "Leyes de Newton sobre la Fuerza y el Movimiento",
+    "publico": "Estudiantes de secundaria y bachillerato (14-17 años)",
+    "faq": [
+        {
+            "pattern": ".*qu[eé] es la fuerza.*",
+            "pregunta": "¿Qué es la fuerza?",
+            "respuesta": "La fuerza es cualquier acción, esfuerzo o influencia que puede alterar el estado de movimiento o de reposo de un cuerpo. Es decir, es lo que hace que un objeto se mueva, se detenga o cambie de dirección. Se mide en Newtons (N)."
+        },
+        {
+            "pattern": ".*qu[eé] es la inercia.*",
+            "pregunta": "¿Qué es la inercia?",
+            "respuesta": "La inercia es la propiedad que tienen los cuerpos de resistirse a cambiar su estado de movimiento. Un objeto en reposo quiere seguir en reposo, y uno en movimiento quiere seguir moviéndose en línea recta y a velocidad constante."
+        },
+        {
+            "pattern": ".*qu[eé] es la masa.*",
+            "pregunta": "¿Qué es la masa?",
+            "respuesta": "La masa es la cantidad de 'materia' que tiene un objeto. Es una medida de su inercia. Cuanta más masa tiene un objeto, más difícil es moverlo o detenerlo. Se mide en kilogramos (kg)."
+        },
+        {
+            "pattern": ".*qu[eé] es la aceleraci[oó]n.*",
+            "pregunta": "¿Qué es la aceleración?",
+            "respuesta": "La aceleración es el cambio en la velocidad de un objeto. Puede ser que aumente su velocidad, la disminuya (desaceleración) o que cambie de dirección. Se mide en metros por segundo al cuadrado (m/s²)."
+        }
+    ],
+    "resolucion": [
+        {
+            "pattern": ".*(primera|inercia).*",
+            "respuesta": "¡Correcto! Es la Primera Ley de Newton o Ley de la Inercia. El balón no se moverá a menos que una fuerza (tu pie) actúe sobre él.",
+            "instruccion": "¡Vamos a analizar las 3 Leyes de Newton con ejemplos!\n\nImagina un balón de fútbol quieto en el césped. ¿Qué ley explica por qué el balón permanecerá quieto indefinidamente si nadie lo patea?",
+            "pista": "¿Qué ley habla de que los objetos en reposo tienden a permanecer en reposo? También se conoce como la Ley de la..."
+        },
+        {
+            "pattern": ".*(fuerza|aceleraci[oó]n|segunda).*",
+            "respuesta": "¡Exacto! Es la Segunda Ley de Newton. La fuerza que aplicas (F) causa una aceleración (a) en el objeto (de masa m). F=ma.",
+            "instruccion": "Ahora, imagina que empujas un carrito de supermercado vacío y luego uno lleno. Necesitas más fuerza para mover el que está lleno. ¿Qué ley relaciona la fuerza, la masa y la aceleración?",
+            "pista": "Piensa en la famosa fórmula F=ma. ¿A qué ley pertenece?"
+        },
+        {
+            "pattern": ".*(acelerar[aá] m[aá]s|mayor aceleraci[oó]n).*",
+            "respuesta": "¡Perfecto! Según F=ma, si la fuerza (F) es la misma y la masa (m) es menor, la aceleración (a) tiene que ser mayor. Por eso la pelota de tenis sale disparada más rápido.",
+            "instruccion": "Siguiendo con la segunda ley (F=ma): si aplicas la misma fuerza para lanzar una bola de bolos y una pelota de tenis, ¿cuál de las dos acelerará más?",
+            "pista": "La fórmula es a = F/m. Si la masa 'm' es más pequeña, ¿qué pasa con la aceleración 'a'?"
+        },
+        {
+            "pattern": ".*(acci[oó]n y reacci[oó]n|tercera).*",
+            "respuesta": "¡Muy bien! Es la Tercera Ley de Newton, o Principio de Acción y Reacción. Por cada acción, hay una reacción igual y opuesta.",
+            "instruccion": "Imagina que estás en un bote y empujas el muelle para alejarte. Tú empujas el muelle (acción), y el muelle te empuja a ti y al bote hacia atrás (reacción). ¿Qué ley describe este fenómeno?",
+            "pista": "Esta ley se conoce por su famoso principio: 'acción y ...'"
+        },
+        {
+            "pattern": ".*(cohete|suelo|tierra).*",
+            "respuesta": "¡Así es! El cohete empuja los gases hacia abajo (acción), y los gases empujan al cohete hacia arriba (reacción), permitiéndole despegar.",
+            "instruccion": "Pensemos en otro ejemplo de la tercera ley: un cohete despegando. El cohete expulsa gases a gran velocidad hacia abajo. ¿Sobre qué objeto ejerce el cohete la fuerza de 'acción'?",
+            "pista": "El cohete empuja algo para poder subir. ¿Qué es lo que expulsa hacia abajo?"
+        },
+        {
+            "pattern": ".*(igual|misma magnitud|misma fuerza).*",
+            "respuesta": "¡Correcto! Aunque los efectos son muy diferentes (la Tierra apenas se mueve y la manzana cae rápido), las fuerzas son exactamente iguales en magnitud.",
+            "instruccion": "Una última pregunta para pensar: la Tierra atrae a una manzana con la fuerza de la gravedad (acción). La manzana también atrae a la Tierra (reacción). ¿Cómo es la magnitud de la fuerza que ejerce la manzana sobre la Tierra comparada con la que ejerce la Tierra sobre la manzana?",
+            "pista": "La tercera ley dice que las fuerzas de acción y reacción son... ¿iguales o diferentes?"
+        },
+        {
+            "pattern": ".*(inercia).*",
+            "respuesta": "¡Exacto! Debido a su enorme masa (y por tanto, su enorme inercia), la fuerza que ejerce la manzana es demasiado pequeña para causar una aceleración notable en la Tierra.",
+            "instruccion": "Si las fuerzas son iguales, ¿por qué solo vemos moverse a la manzana y no a la Tierra? (Pista: Piensa en la segunda ley, F=ma)",
+            "pista": "Recuerda que a = F/m. La masa de la Tierra es gigantesca. ¿Qué propiedad le confiere esa gran masa?"
+        },
+        {
+            "pattern": ".+",
+            "respuesta": "¡Felicidades! Has repasado con éxito las tres leyes de Newton y cómo se aplican en el mundo real. ¡Son la base de casi toda la física clásica!",
+            "instruccion": "¡Excelente trabajo! Has demostrado entender las tres leyes de Newton. Escribe 'listo' para finalizar.",
+            "pista": "Escribe 'listo' para continuar."
+        }
+    ],
+    "feedback_positivo": [
+        "¡Correcto!",
+        "¡Muy bien pensado!",
+        "¡Exactamente!",
+        "¡Esa es la idea!",
+        "¡Perfecto!",
+        "¡Lo has clavado!"
+    ]
+}

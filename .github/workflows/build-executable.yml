@@ -1,0 +1,44 @@
+# Nombre del flujo de trabajo que aparecerá en la pestaña "Actions" de GitHub
+name: Build Windows Executable
+
+# Define cuándo se ejecutará este flujo de trabajo
+on:
+  push:
+    branches: [ main ] # Se ejecuta cada vez que haces un push a la rama 'main'
+
+# Define los trabajos (jobs) que se van a ejecutar. En este caso, solo uno.
+jobs:
+  build:
+    # El tipo de máquina virtual (runner) en la que se ejecutará el trabajo.
+    # Usamos windows-latest para crear un .exe
+    runs-on: windows-latest
+
+    # Los pasos que componen el trabajo
+    steps:
+      # 1. Clona tu repositorio en el runner
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Configura el entorno de Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' # Puedes usar la versión de Python que prefieras
+
+      # 3. Instala las dependencias listadas en requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Ejecuta PyInstaller para crear el ejecutable
+      - name: Build executable with PyInstaller
+        run: |
+          pyinstaller --name "ScaffoldingChatbot" --onefile --windowed --icon="icon.ico" main.py
+
+      # 5. Sube el ejecutable como un artefacto del flujo de trabajo
+      - name: Upload executable artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-executable # El nombre del artefacto que podrás descargar
+          path: dist/ScaffoldingChatbot.exe # La ruta al archivo .exe generado

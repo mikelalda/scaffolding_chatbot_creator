@@ -1,0 +1,84 @@
+{
+    "tema": "Teorema del Binomio (Binomio de Newton)",
+    "publico": "Estudiantes de bachillerato (16-18 años)",
+    "faq": [
+        {
+            "pattern": ".*qu[eé] es un binomio.*",
+            "pregunta": "¿Qué es un binomio?",
+            "respuesta": "Un binomio es una expresión algebraica que consta de dos términos que se suman o se restan. Por ejemplo, (a + b) o (x - 3) son binomios."
+        },
+        {
+            "pattern": ".*qu[eé] es el teorema del binomio.*",
+            "pregunta": "¿Qué es el Teorema del Binomio?",
+            "respuesta": "El Teorema del Binomio, o Binomio de Newton, es una fórmula que nos permite expandir la potencia de un binomio, como (a+b)ⁿ, sin tener que multiplicar término por término. Es un atajo muy poderoso."
+        },
+        {
+            "pattern": ".*qu[eé] es un n[uú]mero combinatorio.*",
+            "pregunta": "¿Qué es un número combinatorio?",
+            "respuesta": "Un número combinatorio, representado como C(n, k) o (n k), nos dice de cuántas maneras podemos elegir 'k' elementos de un conjunto de 'n' elementos sin importar el orden. Estos números son los coeficientes que aparecen en el desarrollo del binomio."
+        },
+        {
+            "pattern": ".*(tri[aá]ngulo de pascal|para qu[eé] sirve pascal).*",
+            "pregunta": "¿Para qué sirve el Triángulo de Pascal?",
+            "respuesta": "El Triángulo de Pascal es una herramienta visual muy útil para encontrar rápidamente los coeficientes del desarrollo de un binomio. Cada fila del triángulo corresponde a los coeficientes de (a+b)ⁿ para n=0, 1, 2, 3, etc."
+        }
+    ],
+    "resolucion": [
+        {
+            "pattern": ".*(1, 3, 3, 1|1 3 3 1).*",
+            "respuesta": "¡Perfecto! Esos son los coeficientes para un binomio elevado al cubo.",
+            "instruccion": "¡Vamos a desarrollar (a + b)³ juntos!\n\nPrimero, necesitamos los coeficientes. Usando el Triángulo de Pascal o la fórmula, ¿cuáles son los coeficientes para la potencia n=3?",
+            "pista": "Busca la fila del Triángulo de Pascal que empieza con '1, 3...'. O calcula C(3,0), C(3,1), C(3,2) y C(3,3)."
+        },
+        {
+            "pattern": ".*(3, 2, 1, 0|descienden|decrecen|bajan).*",
+            "respuesta": "¡Exacto! Los exponentes del primer término 'a' van disminuyendo de 'n' hasta 0.",
+            "instruccion": "Ahora pensemos en los exponentes del primer término, 'a'. Si empezamos con a³, ¿cómo continúan los exponentes de 'a' en los siguientes términos?",
+            "pista": "Los exponentes del primer término siempre empiezan en 'n' (en este caso 3) y van bajando de uno en uno."
+        },
+        {
+            "pattern": ".*(0, 1, 2, 3|ascienden|crecen|suben).*",
+            "respuesta": "¡Muy bien! Los exponentes del segundo término 'b' hacen lo contrario, van aumentando de 0 a 'n'.",
+            "instruccion": "Genial. ¿Y qué pasa con los exponentes del segundo término, 'b'?",
+            "pista": "Los exponentes del segundo término empiezan en 0 y van subiendo de uno en uno hasta llegar a 'n' (en este caso 3)."
+        },
+        {
+            "pattern": ".*1a³b⁰.*|.*a³.*",
+            "respuesta": "¡Correcto! El primer término es 1a³b⁰, que se simplifica a solo a³.",
+            "instruccion": "¡Perfecto! Ahora vamos a juntar todo. ¿Cómo sería el PRIMER término completo? (coeficiente * término 'a' * término 'b')",
+            "pista": "Usa el primer coeficiente (1), el primer exponente de 'a' (3) y el primer exponente de 'b' (0)."
+        },
+        {
+            "pattern": ".*3a²b¹.*|.*3a²b.*",
+            "respuesta": "¡Así es! El segundo término es 3a²b.",
+            "instruccion": "Muy bien. ¿Y cómo sería el SEGUNDO término?",
+            "pista": "Usa el segundo coeficiente (3), el segundo exponente de 'a' (2) y el segundo exponente de 'b' (1)."
+        },
+        {
+            "pattern": ".*3a¹b².*|.*3ab².*",
+            "respuesta": "¡Vas genial! El tercer término es 3ab².",
+            "instruccion": "Excelente. ¿Cuál es el TERCER término?",
+            "pista": "Usa el tercer coeficiente (3), el tercer exponente de 'a' (1) y el tercer exponente de 'b' (2)."
+        },
+        {
+            "pattern": ".*1a⁰b³.*|.*b³.*",
+            "respuesta": "¡Casi lo tenemos! El último término es 1a⁰b³, que se simplifica a b³.",
+            "instruccion": "¡Ya solo queda el último! ¿Cuál es el CUARTO término?",
+            "pista": "Usa el último coeficiente (1), el último exponente de 'a' (0) y el último exponente de 'b' (3)."
+        },
+        {
+            "pattern": ".*a³\\s*\\+\\s*3a²b\\s*\\+\\s*3ab²\\s*\\+\\s*b³.*",
+            "respuesta": "¡FELICIDADES! Has desarrollado (a+b)³ correctamente usando el Teorema del Binomio.",
+            "instruccion": "¡Perfecto! Ahora une todos los términos con signos de '+' para obtener el resultado final. ¿Cómo quedaría?",
+            "pista": "Simplemente escribe los cuatro términos que hemos encontrado, uno después del otro, separados por un '+'."
+        }
+    ],
+    "feedback_positivo": [
+        "¡Excelente!",
+        "¡Muy bien!",
+        "¡Correcto!",
+        "¡Así se hace!",
+        "¡Perfecto!",
+        "¡Lo tienes!"
+    ]
+}

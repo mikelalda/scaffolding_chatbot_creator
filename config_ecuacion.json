@@ -1,0 +1,107 @@
+{
+    "tema": "Ecuaciones de primer grado con una incógnita",
+    "publico": "Estudiantes de secundaria (12-16 años)",
+    "faq": [
+        {
+            "pattern": ".*qu[eé]\\s*es.*ecuaci[oó]n.*",
+            "pregunta": "¿Qué es una ecuación?",
+            "respuesta": "Una ecuación es una igualdad matemática entre dos expresiones, en las que aparecen valores conocidos y uno o varios valores desconocidos (incógnitas). Por ejemplo: 2x + 5 = 11"
+        },
+        {
+            "pattern": ".*qu[eé]\\s*es.*inc[oó]gnita.*",
+            "pregunta": "¿Qué es una incógnita?",
+            "respuesta": "La incógnita es el valor desconocido que queremos encontrar. Generalmente se representa con una letra, como 'x'. En el ejemplo 2x + 5 = 11, la incógnita es la 'x'."
+        },
+        {
+            "pattern": ".*qu[eé]\\s*es.*t[eé]rmino.*",
+            "pregunta": "¿Qué es un término?",
+            "respuesta": "Un término es cada una de las partes de una expresión algebraica separadas por un signo de '+' o '-'. En 2x + 5 = 11, los términos son '2x', '+5' y '11'."
+        },
+        {
+            "pattern": ".*c[oó]mo\\s*se\\s*aisla.*inc[oó]gnita.*",
+            "pregunta": "¿Cómo se aísla la incógnita?",
+            "respuesta": "Aislar o despejar la incógnita significa dejarla completamente sola a un lado del signo igual. Para lograrlo, movemos los otros términos al lado contrario usando su operación inversa (si algo suma, pasa restando; si multiplica, pasa dividiendo, etc.)."
+        },
+        {
+            "pattern": ".*c[oó]mo\\s*se\\s*verifica.*soluci[oó]n.*",
+            "pregunta": "¿Cómo se verifica la solución?",
+            "respuesta": "Verificar es muy fácil: sustituyes la incógnita 'x' en la ecuación original por el valor que encontraste. Si al hacer los cálculos, ambos lados de la igualdad dan el mismo resultado, ¡tu solución es correcta!"
+        }
+    ],
+    "resolucion": [
+        {
+            "pattern": ".*(pasar|mover|quitar).*(-?7).*",
+            "respuesta": "¡Exacto! Vamos a mover el término que no tiene 'x'.",
+            "instruccion": "Ok, vamos a resolver juntos la ecuación: 3x - 7 = 8.\n\nEl objetivo es dejar la 'x' sola. ¿Cuál crees que es el primer paso?",
+            "pista": "Nuestro objetivo es dejar la 'x' sola. ¿Qué término deberíamos mover primero al otro lado del igual?"
+        },
+        {
+            "pattern": ".*(sumando|sumar|con un m[aá]s).*",
+            "respuesta": "¡Correcto! Como está restando, pasa al otro lado sumando.",
+            "instruccion": "Muy bien. Y si el -7 está restando, ¿cómo pasa al otro lado? Recuerda usar la operación inversa.",
+            "pista": "Recuerda que para deshacer una resta, usamos la operación opuesta. ¿Cuál es la opuesta a restar?"
+        },
+        {
+            "pattern": ".*3x\\s*=\\s*8\\s*\\+\\s*7.*",
+            "respuesta": "¡Perfecto, así queda la ecuación!",
+            "instruccion": "Genial. Entonces, ¿cómo quedaría escrita la ecuación después de mover el 7?",
+            "pista": "Escribe la ecuación completa. A la izquierda queda '3x' y a la derecha '8' y el '+7' que movimos."
+        },
+        {
+            "pattern": ".*15.*",
+            "respuesta": "¡Muy bien! La ecuación ahora es 3x = 15.",
+            "instruccion": "¡Vas muy bien! Ahora, ¿cuánto es 8 + 7?",
+            "pista": "Solo tienes que hacer la suma. Revisa el cálculo de 8 + 7."
+        },
+        {
+            "pattern": ".*(dividiendo|dividir|pasar el 3).*",
+            "respuesta": "¡Eso es! El 3 que multiplica a la 'x' pasa dividiendo.",
+            "instruccion": "La 'x' todavía no está sola. El 3 está junto a ella. ¿Qué operación está haciendo el 3 y qué deberíamos hacer para quitarlo?",
+            "pista": "Cuando un número está junto a una letra sin ningún signo, significa que está multiplicando. ¿Cuál es la operación inversa a multiplicar?"
+        },
+        {
+            "pattern": ".*x\\s*=\\s*15\\s*[\\/|:|dividido por|entre]\\s*3.*",
+            "respuesta": "¡Casi lo tenemos!",
+            "instruccion": "Perfecto. ¿Cómo escribirías entonces el paso final para encontrar 'x'?",
+            "pista": "Escribe la operación completa: x = 15... y la operación que dijiste."
+        },
+        {
+            "pattern": ".*5.*",
+            "respuesta": "¡Felicidades! Has resuelto la ecuación: x = 5.",
+            "instruccion": "¡Ya solo queda un cálculo! ¿Cuánto es 15 dividido por 3?",
+            "pista": "¿Qué número multiplicado por 3 te da 15? Ese es el resultado."
+        },
+        {
+            "pattern": ".*(s[ií]|claro|verificar|vale|ok).*",
+            "respuesta": "¡Genial! La ecuación original era 3x - 7 = 8.",
+            "instruccion": "¿Te gustaría que verifiquemos juntos si la solución es correcta?",
+            "pista": "Solo dime 'sí' o 'no'."
+        },
+        {
+            "pattern": ".*3\\s*(\\*|\\(5\\)|por 5)\\s*5\\s*-\\s*7.*",
+            "respuesta": "¡Perfecto! Has sustituido la 'x' por el 5.",
+            "instruccion": "Para verificar, reemplaza la 'x' en la ecuación original (3x - 7 = 8) por el valor 5. ¿Cómo quedaría?",
+            "pista": "Donde veas la 'x', pon un 5. Recuerda que 3x significa 3 multiplicado por x."
+        },
+        {
+            "pattern": ".*15.*",
+            "respuesta": "¡Correcto! Ahora la ecuación se ve así: 15 - 7 = 8.",
+            "instruccion": "Ahora, según el orden de las operaciones, ¿qué calculamos primero? ¿Cuánto es 3 * 5?",
+            "pista": "Primero se resuelven las multiplicaciones. Calcula 3 por 5."
+        },
+        {
+            "pattern": ".*8.*",
+            "respuesta": "¡Excelente! La ecuación final es 8 = 8. Como ambos lados son iguales, ¡la solución x = 5 es correcta!",
+            "instruccion": "Y para terminar, ¿cuánto es 15 - 7?",
+            "pista": "Es una simple resta, ¡tú puedes!"
+        }
+    ],
+    "feedback_positivo": [
+        "¡Muy bien!",
+        "¡Eso es!",
+        "¡Correcto!",
+        "¡Perfecto!",
+        "¡Excelente!",
+        "¡Así es!"
+    ]
+}
