@@ -2,7 +2,7 @@
 
 ¡Crea tus propios chatbots educativos de scaffolding sin escribir una sola línea de código! Esta herramienta te permite diseñar conversaciones guiadas paso a paso, ideales para tutorías, explicaciones de conceptos y ejercicios prácticos.
 
-![Captura de la aplicación](httpsd://i.imgur.com/your-image-url.png)  <!-- Reemplaza esto con una URL de una captura de tu app. Súbela a imgur.com u otro servicio -->
+![Captura de la aplicación](assets/image.png)  <!-- Reemplaza esto con una URL de una captura de tu app. Súbela a imgur.com u otro servicio -->
 
 ---
 
