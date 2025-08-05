@@ -8,6 +8,11 @@ on:
       - 'v*'
 
 jobs:
+  # --- INICIO DE LA CORRECCIÓN ---
+  permissions:
+    contents: write # Concede permisos para escribir en el contenido del repo (necesario para crear releases)
+  # --- FIN DE LA CORRECCIÓN ---
+  
   build:
     # Se ejecutará en la última versión de Windows disponible en GitHub
     runs-on: windows-latest
@@ -32,7 +37,7 @@ jobs:
       # 4. Construye el ejecutable usando PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller --name "ScaffoldingChatbot" --onefile --windowed --icon="assets/icon.ico" --add-data "configs;configs" main.py
+          pyinstaller --name "ScaffoldingChatbot" --onefile --windowed --icon="assets/icon.ico" main.py
       
       # 5. Crea un Release en GitHub y adjunta el ejecutable
       - name: Create Release and Upload Asset
