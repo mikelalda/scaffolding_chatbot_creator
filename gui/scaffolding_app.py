@@ -12,19 +12,7 @@ import re
 
 class ScaffoldingApp(tb.Window):
     def __init__(self):
-        super().__init__(themename="")
-        # --- MODERNIZA: Paleta y fuente ---
-        self.BG_COLOR = "#F0F0F0"
-        self.PANEL_COLOR = "#EAEAEA"
-        self.LABEL_COLOR = "#1C1C1C"
-        self.ENTRY_BG = "#FFFFFF"
-        self.BUTTON_COLOR = "#0078D4"
-        self.BUTTON_TEXT_COLOR = "#FFFFFF"
-        self.FONT_NORMAL = ("Calibri", 12)
-        self.FONT_BOLD = ("Calibri", 12, "bold")
-        self.configure(bg=self.BG_COLOR)
-        self.title("Scaffolding Chatbot Educativo")
-        self.geometry("950x800")
+        super().__init__(themename="cosmo")  # Cambia el tema por defecto
         
         self.bot_data = {
             "tema": "",
@@ -131,91 +119,74 @@ class ScaffoldingApp(tb.Window):
         tab_control.add(self.tab_chat, text="Chat con Bot")
         tab_control.pack(expand=1, fill="both")
 
-        # --- Estiliza frames ---
-        style = ttk.Style()
-        style.theme_use('clam')
-        style.configure("TFrame", background=self.BG_COLOR)
-        style.configure("TLabelFrame", background=self.PANEL_COLOR, font=self.FONT_BOLD)
-        style.configure("TLabel", background=self.PANEL_COLOR, foreground=self.LABEL_COLOR, font=self.FONT_NORMAL)
-        style.configure("TButton", background=self.BUTTON_COLOR, foreground=self.BUTTON_TEXT_COLOR, font=self.FONT_BOLD)
-        style.map("TButton", background=[('active', '#005A9E')])
-
         file_frame = ttk.Frame(self.tab_edit)
         file_frame.pack(fill='x', pady=5)
-        ttk.Button(file_frame, text="Guardar Configuración", command=self.save, style="TButton").pack(side='left', padx=5)
-        ttk.Button(file_frame, text="Cargar Configuración", command=self.load, style="TButton").pack(side='left', padx=5)
+        ttk.Button(file_frame, text="Guardar Configuración", command=self.save).pack(side='left', padx=5)
+        ttk.Button(file_frame, text="Cargar Configuración", command=self.load).pack(side='left', padx=5)
 
         general_frame = ttk.LabelFrame(self.tab_edit, text="Información General")
         general_frame.pack(fill='x', expand=True, padx=5, pady=5)
-        ttk.Label(general_frame, text="Tema:", style="TLabel").grid(row=0, column=0, sticky="w", padx=5, pady=2)
+        ttk.Label(general_frame, text="Tema:").grid(row=0, column=0, sticky="w", padx=5, pady=2)
         self.tema_entry = ttk.Entry(general_frame, width=80)
         self.tema_entry.grid(row=0, column=1, sticky="ew", padx=5, pady=2)
-        self.tema_entry.configure(font=self.FONT_NORMAL)
-        ttk.Label(general_frame, text="Público objetivo:", style="TLabel").grid(row=1, column=0, sticky="w", padx=5, pady=2)
+        ttk.Label(general_frame, text="Público objetivo:").grid(row=1, column=0, sticky="w", padx=5, pady=2)
         self.publico_entry = ttk.Entry(general_frame, width=80)
         self.publico_entry.grid(row=1, column=1, sticky="ew", padx=5, pady=2)
-        self.publico_entry.configure(font=self.FONT_NORMAL)
         general_frame.columnconfigure(1, weight=1)
 
         faq_frame = ttk.LabelFrame(self.tab_edit, text="Preguntas Frecuentes (FAQs)")
         faq_frame.pack(fill='x', expand=True, padx=5, pady=5)
-        ttk.Label(faq_frame, text="Pregunta del usuario:", style="TLabel").grid(row=0, column=0, sticky='w', padx=5)
+        ttk.Label(faq_frame, text="Pregunta del usuario:").grid(row=0, column=0, sticky='w', padx=5)
         self.faq_pregunta_entry = ttk.Entry(faq_frame, width=50)
         self.faq_pregunta_entry.grid(row=0, column=1, padx=5, pady=5, sticky='ew')
-        self.faq_pregunta_entry.configure(font=self.FONT_NORMAL)
-        ttk.Label(faq_frame, text="Respuesta del bot:", style="TLabel").grid(row=1, column=0, sticky='w', padx=5)
+        ttk.Label(faq_frame, text="Respuesta del bot:").grid(row=1, column=0, sticky='w', padx=5)
         self.faq_respuesta_entry = ttk.Entry(faq_frame, width=50)
         self.faq_respuesta_entry.grid(row=1, column=1, padx=5, pady=5, sticky='ew')
-        self.faq_respuesta_entry.configure(font=self.FONT_NORMAL)
         self.faq_buttons_frame = ttk.Frame(faq_frame)
         self.faq_buttons_frame.grid(row=0, column=2, rowspan=2, padx=10, sticky='ns')
-        self.faq_add_button = ttk.Button(self.faq_buttons_frame, text="Añadir FAQ", command=self.add_faq, style="TButton")
+        self.faq_add_button = ttk.Button(self.faq_buttons_frame, text="Añadir FAQ", command=self.add_faq)
         self.faq_add_button.pack()
-        self.faq_listbox = tk.Listbox(faq_frame, height=5, bg=self.ENTRY_BG, font=self.FONT_NORMAL)
+        self.faq_listbox = tk.Listbox(faq_frame, height=5)
         self.faq_listbox.grid(row=2, column=0, columnspan=3, sticky='ew', padx=5, pady=5)
         self.faq_listbox.bind("<Double-1>", self.edit_faq)
         faq_manage_frame = ttk.Frame(faq_frame)
         faq_manage_frame.grid(row=3, column=0, columnspan=3, pady=5)
-        self.faq_modify_button = ttk.Button(faq_manage_frame, text="Modificar Seleccionada", command=self.edit_faq, style="TButton")
+        self.faq_modify_button = ttk.Button(faq_manage_frame, text="Modificar Seleccionada", command=self.edit_faq)
         self.faq_modify_button.pack(side='left', padx=5)
-        self.faq_delete_button = ttk.Button(faq_manage_frame, text="Eliminar Seleccionada", command=self.delete_faq, style="TButton")
+        self.faq_delete_button = ttk.Button(faq_manage_frame, text="Eliminar Seleccionada", command=self.delete_faq)
         self.faq_delete_button.pack(side='left', padx=5)
         faq_frame.columnconfigure(1, weight=1)
 
         steps_frame = ttk.LabelFrame(self.tab_edit, text="Pasos de Resolución de Problemas")
         steps_frame.pack(fill='both', expand=True, padx=5, pady=5)
-        ttk.Label(steps_frame, text="Instrucción/Pregunta del bot:", style="TLabel").grid(row=0, column=0, sticky='w', padx=5)
+        ttk.Label(steps_frame, text="Instrucción/Pregunta del bot:").grid(row=0, column=0, sticky='w', padx=5)
         self.step_instruccion_entry = ttk.Entry(steps_frame)
         self.step_instruccion_entry.grid(row=0, column=1, padx=5, pady=2, sticky='ew')
-        self.step_instruccion_entry.configure(font=self.FONT_NORMAL)
-        ttk.Label(steps_frame, text="Respuesta esperada (Patrón Regex):", style="TLabel").grid(row=1, column=0, sticky='w', padx=5)
+        ttk.Label(steps_frame, text="Respuesta esperada (Patrón Regex):").grid(row=1, column=0, sticky='w', padx=5)
         self.step_pattern_entry = ttk.Entry(steps_frame)
         self.step_pattern_entry.grid(row=1, column=1, padx=5, pady=2, sticky='ew')
-        self.step_pattern_entry.configure(font=self.FONT_NORMAL)
-        ttk.Label(steps_frame, text="Feedback de éxito del bot:", style="TLabel").grid(row=2, column=0, sticky='w', padx=5)
+        ttk.Label(steps_frame, text="Feedback de éxito del bot:").grid(row=2, column=0, sticky='w', padx=5)
         self.step_respuesta_entry = ttk.Entry(steps_frame)
         self.step_respuesta_entry.grid(row=2, column=1, padx=5, pady=2, sticky='ew')
-        self.step_respuesta_entry.configure(font=self.FONT_NORMAL)
-        ttk.Label(steps_frame, text="Pista en caso de error:", style="TLabel").grid(row=3, column=0, sticky='w', padx=5)
+        ttk.Label(steps_frame, text="Pista en caso de error:").grid(row=3, column=0, sticky='w', padx=5)
         self.step_pista_entry = ttk.Entry(steps_frame)
         self.step_pista_entry.grid(row=3, column=1, padx=5, pady=2, sticky='ew')
-        self.step_pista_entry.configure(font=self.FONT_NORMAL)
         self.step_buttons_frame = ttk.Frame(steps_frame)
         self.step_buttons_frame.grid(row=1, column=2, rowspan=2, padx=10, sticky='ns')
-        self.step_add_button = ttk.Button(self.step_buttons_frame, text="Añadir Paso", command=self.add_step, style="TButton")
+        self.step_add_button = ttk.Button(self.step_buttons_frame, text="Añadir Paso", command=self.add_step)
         self.step_add_button.pack()
-        self.steps_listbox = tk.Listbox(steps_frame, height=8, bg=self.ENTRY_BG, font=self.FONT_NORMAL)
+        self.steps_listbox = tk.Listbox(steps_frame, height=8)
         self.steps_listbox.grid(row=4, column=0, columnspan=3, sticky='nsew', padx=5, pady=5)
         self.steps_listbox.bind("<Double-1>", self.edit_step)
         steps_manage_frame = ttk.Frame(steps_frame)
         steps_manage_frame.grid(row=5, column=0, columnspan=3, pady=5)
-        self.step_move_up_button = ttk.Button(steps_manage_frame, text="Subir", command=self.move_step_up, style="TButton")
+        self.step_move_up_button = ttk.Button(steps_manage_frame, text="Subir", command=self.move_step_up)
         self.step_move_up_button.pack(side='left', padx=5)
-        self.step_move_down_button = ttk.Button(steps_manage_frame, text="Bajar", command=self.move_step_down, style="TButton")
+        self.step_move_down_button = ttk.Button(steps_manage_frame, text="Bajar", command=self.move_step_down)
         self.step_move_down_button.pack(side='left', padx=5)
-        self.step_modify_button = ttk.Button(steps_manage_frame, text="Modificar Seleccionado", command=self.edit_step, style="TButton")
+        self.step_modify_button = ttk.Button(steps_manage_frame, text="Modificar Seleccionado", command=self.edit_step)
         self.step_modify_button.pack(side='left', padx=20)
-        self.step_delete_button = ttk.Button(steps_manage_frame, text="Eliminar Seleccionado", command=self.delete_step, style="TButton")
+        self.step_delete_button = ttk.Button(steps_manage_frame, text="Eliminar Seleccionado", command=self.delete_step)
         self.step_delete_button.pack(side='left', padx=5)
         steps_frame.columnconfigure(1, weight=1)
         steps_frame.rowconfigure(4, weight=1)
@@ -223,9 +194,7 @@ class ScaffoldingApp(tb.Window):
         self.init_chat_panel()
 
         # --- Botón de configuración de tema ---
-        # config_frame = ttk.Frame(self.tab_edit)
-        # config_frame.pack(fill='x', pady=5)
-        ttk.Button(file_frame, text="Configuración de Tema", command=self.open_theme_selector, style="TButton", bootstyle="rounded").pack(side='right', padx=5)
+        ttk.Button(file_frame, text="Configuración de Tema", command=self.open_theme_selector).pack(side='right', padx=5)
 
     def load(self, *args):
         if self.is_editing:
@@ -425,7 +394,7 @@ class ScaffoldingApp(tb.Window):
             self.steps_listbox.insert(tk.END, f"Paso {i + 1}: {step['instruccion']}")
 
     def open_theme_selector(self):
-        temas = ["sandstone", "cosmo", "minty", "yeti", "pulse", "sandstone",
+        temas = ["sandstone", "cosmo", "minty", "yeti", "pulse", "flatly",
             "morph", "journal", "darkly", "superhero", "solar", "cyborg", "simplex", "united"
         ]
         selector = tk.Toplevel(self)
@@ -437,14 +406,14 @@ class ScaffoldingApp(tb.Window):
         frame = ttk.Frame(selector)
         frame.pack(fill="x", padx=10, pady=20)
 
-        ttk.Label(frame, text="Selecciona un tema:", font=self.FONT_BOLD).pack(side="left", padx=(0,10))
+        ttk.Label(frame, text="Selecciona un tema:").pack(side="left", padx=(0,10))
         tema_var = tk.StringVar(value=self.style.theme.name)
-        tema_combo = ttk.Combobox(frame, textvariable=tema_var, values=temas, state="readonly", font=self.FONT_NORMAL, width=15)
+        tema_combo = ttk.Combobox(frame, textvariable=tema_var, values=temas, state="readonly", width=15)
         tema_combo.pack(side="left")
 
         # Botón debajo, alineado a la derecha
         btn_frame = ttk.Frame(selector)
         btn_frame.pack(fill="x", padx=10)
-        ttk.Button(btn_frame, text="Aplicar", command=lambda: [self.style.theme_use(tema_var.get()), selector.destroy()], style="TButton", bootstyle="rounded").pack(side="right", pady=5)
+        ttk.Button(btn_frame, text="Aplicar", command=lambda: [self.style.theme_use(tema_var.get()), selector.destroy()]).pack(side="right", pady=5)
 
 # --- END OF FILE ---
