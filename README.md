@@ -13,6 +13,8 @@
 - **FAQs Dinámicas**: Crea una sección de preguntas frecuentes que el bot puede responder de forma inteligente.
 - **Configuraciones Guardables**: Guarda y carga diferentes "personalidades" de chatbot como archivos `.json`. ¡Crea un tutor para cada tema!
 - **Interfaz de Chat Moderna**: Una ventana de chat atractiva con burbujas de diálogo que mejora la experiencia del usuario.
+- **Selector de Tema Visual**: Cambia el aspecto de la aplicación fácilmente desde el botón de configuración, eligiendo entre varios estilos modernos.
+- **Modo Solo Chatbot**: Puedes usar únicamente la ventana de chat del bot, sin el editor. Solo asegúrate de colocar tus archivos de configuración `.json` en la carpeta `configs` al mismo nivel que el ejecutable para que sean detectados.
 - **Creación Automatizada**: Incluye un flujo de trabajo de GitHub Actions para generar automáticamente un ejecutable (`.exe`) para una fácil distribución.
 
 ## 🚀 Cómo Empezar
@@ -24,6 +26,11 @@
 3.  Ejecuta el archivo. No necesita instalación.
 4.  Dentro de la aplicación, haz clic en **"Cargar Configuración"** y selecciona uno de los archivos `.json` de ejemplo (`config_ecuaciones.json`, `config_leyes_newton.json`, etc.).
 5.  Ve a la pestaña **"Chat con Bot"** y empieza a interactuar. ¡Prueba a escribir "practicar"!
+
+### Solo Chatbot
+1.  Si solo quieres usar el chatbot descarga el archivo `Chatbot.exe`. 
+2.  Coloca tus archivos `.json` en la carpeta `configs` al mismo nivel que el ejecutable. 
+3.  Ejecuta el `Chatbot.exe` y todo arraca.
 
 ### Para Desarrolladores
 
@@ -69,6 +76,7 @@ La magia de esta herramienta reside en la pestaña **"Edición del Chatbot"**. A
   - **Feedback de Éxito**: Lo que el bot dice cuando el usuario acierta.
   - **Pista de Error**: La ayuda que el bot ofrece si el usuario se equivoca.
 - **Gestionar Contenido**: Puedes **modificar**, **eliminar** y **reordenar** (subir/bajar) los pasos para perfeccionar el flujo de la conversación.
+- **Personalizar el Tema Visual**: Usa el botón de configuración para elegir el estilo visual que prefieras.
 
 Una vez que estés satisfecho, haz clic en **"Guardar Configuración"** para crear tu propio archivo `.json` y compartirlo.
 
@@ -82,6 +90,8 @@ Una vez que estés satisfecho, haz clic en **"Guardar Configuración"** para cre
 ├── backend/ # Lógica del chatbot
 
 │ └── chatbot_logic.py
+
+│ └── persistence.py # Lógica para guardar/cargar archivos JSON
 
 ├── gui/ # Componentes de la interfaz gráfica
 
@@ -98,8 +108,6 @@ Una vez que estés satisfecho, haz clic en **"Guardar Configuración"** para cre
 │ └── config_leyes_newton.json
 
 ├── main.py # Punto de entrada de la aplicación
-
-├── persistence.py # Lógica para guardar/cargar archivos JSON
 
 └── requirements.txt # Dependencias de Python
 
