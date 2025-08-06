@@ -73,20 +73,34 @@ La magia de esta herramienta reside en la pestaña **"Edición del Chatbot"**. A
 Una vez que estés satisfecho, haz clic en **"Guardar Configuración"** para crear tu propio archivo `.json` y compartirlo.
 
 ## 📁 Estructura del Proyecto
-.
+
+
 ├── .github/workflows/ # Flujos de trabajo de GitHub Actions
+
 │ └── build-executable.yml
+
 ├── backend/ # Lógica del chatbot
+
 │ └── chatbot_logic.py
+
 ├── gui/ # Componentes de la interfaz gráfica
+
 │ ├── chat_panel.py
+
 │ └── scaffolding_app.py
+
 ├── assets/ # Iconos, imágenes, etc. (ej: icon.ico)
+
 ├── configs/ # Archivos de configuración de ejemplo
+
 │ ├── config_ecuaciones.json
+
 │ └── config_leyes_newton.json
+
 ├── main.py # Punto de entrada de la aplicación
+
 ├── persistence.py # Lógica para guardar/cargar archivos JSON
+
 └── requirements.txt # Dependencias de Python
 
 ## 🤝 Contribuciones
