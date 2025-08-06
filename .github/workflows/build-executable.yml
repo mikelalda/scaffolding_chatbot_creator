@@ -33,19 +33,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4. Construye el ejecutable usando PyInstaller
-      - name: Build executable with PyInstaller
+      # 4. Construye los ejecutables usando PyInstaller
+      - name: Build executables with PyInstaller
         run: |
           pyinstaller --name "ScaffoldingChatbot" --onefile --windowed --icon="assets/icon.ico" main.py
           pyinstaller --name "Chatbot" --onefile --windowed --icon="assets/icon.ico" main.py
-      
-      # 5. Crea un Release en GitHub y adjunta el ejecutable
-      - name: Create Release and Upload Asset
+
+      # 5. Crea un Release en GitHub y adjunta ambos ejecutables
+      - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v2
         with:
-          # El nombre del archivo que se adjuntará al release
-          files: dist/ScaffoldingChatbot.exe |
-                dist/Chatbot.exe
+          files: |
+            dist/ScaffoldingChatbot.exe
+            dist/Chatbot.exe
 
         env:
           # El token es necesario para que la acción pueda crear un release
